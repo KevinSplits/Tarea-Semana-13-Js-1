@@ -55,3 +55,25 @@ footer {
     padding: 1rem;
     flex-shrink: 0;
 }
+
+/* Estilos básicos para el efecto de nieve */
+.snowflake {
+    position: absolute;
+    top: -10px; /* Los copos empiezan fuera de la pantalla */
+    background-color: #fff;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    opacity: 0.8;
+    animation: snow 10s linear infinite;
+}
+
+/* Animación de caída de los copos de nieve */
+@keyframes snow {
+    0% {
+        transform: translateX(0) translateY(0); /* Inicia en la parte superior */
+    }
+    100% {
+        transform: translateX(0) translateY(100vh); /* Caída hasta el final de la pantalla */
+    }
+}

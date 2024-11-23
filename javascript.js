@@ -14,7 +14,7 @@ function actualizarReloj() {
 
 
 }
-setInterval(actualizarReloj, 1);
+setInterval(actualizarReloj, 1000);
 
 function aumentarTL() {
     let parrafo = document.getElementById("parr");
@@ -84,3 +84,38 @@ function ponerCursiva() {
         elemento.style.fontStyle = elemento.style.fontStyle === "italic" ? "normal" : "italic";
     });
 }
+
+// Función para crear los copos de nieve
+function generarNieve() {
+    const cantidad = 100; // Cantidad de copos de nieve
+    const contenedor = document.body; // Se aplica en el body, pero puedes elegir otro contenedor
+
+    for (let i = 0; i < cantidad; i++) {
+        // Crear un copo de nieve
+        const copo = document.createElement("div");
+        copo.classList.add("snowflake");
+
+        // Posición aleatoria
+        copo.style.left = `${Math.random() * 100}vw`; // Ancho aleatorio
+        copo.style.animationDuration = `${Math.random() * 5 + 5}s`; // Duración aleatoria
+        copo.style.animationDelay = `${Math.random() * 5}s`; // Retraso aleatorio
+
+        // Tamaño aleatorio
+        const tamaño = Math.random() * 5 + 5; // Tamaño entre 5px y 10px
+        copo.style.width = `${tamaño}px`;
+        copo.style.height = `${tamaño}px`;
+
+        // Agregar el copo al contenedor
+        contenedor.appendChild(copo);
+
+        // Eliminar el copo cuando se complete la animación
+        copo.addEventListener("animationend", () => {
+            copo.remove();
+        });
+    }
+}
+
+// Llamar a la función de generación de nieve al cargar la página
+window.onload = () => {
+    generarNieve();
+};
